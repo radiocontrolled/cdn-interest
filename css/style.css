@@ -1,23 +1,46 @@
 
-main {
-  background: #eee;
+
+
+svg {
+  background: #2c3e50;
 }
 
 
 
 body {
   font: 10px sans-serif;
+  background: #eee;
+}
+
+h1 {
+  color: #e67e22;
+  font-weight: bold;
+  font-size: 3em;
+  margin-bottom: 0;
+}
+
+p {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+text {
+  fill: #ecf0f1;
 }
 
 .axis path,
 .axis line {
   fill: none;
-  stroke: #000;
+  stroke: #ecf0f1;
   shape-rendering: crispEdges;
+  stroke-width: 0;
 }
 
 .area {
-  fill: "black";
+  fill: #e67e22;
+  stroke-width: 1;
+  fill-opacity: 0.3;
+  stroke: #e67e22;
 }
 
 
