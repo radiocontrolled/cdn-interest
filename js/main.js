@@ -1,14 +1,14 @@
 (function() {
   "use strict";
 
-  var height, width, svg, xScale, xAxis, yScale, area, yAxis, yAxisPretty, margin = {top: 20, right: 20, bottom: 30, left: 50};
+  var height, width, svg, xScale, xAxis, yScale, area, yAxis, yAxisPretty, margin = {top: 20, right: 20, bottom: 30, left: 40};
   
   // RESPONSIVE FUNCTIONS -------------------
 
   function getViewportDimensions() { 
 
     width = document.getElementsByTagName("main")[0].offsetWidth;
-    height = window.innerHeight * 0.8;
+    height = window.innerHeight * 0.5;
     width = width - margin.left - margin.right,
     height = height - margin.top - margin.bottom;
 
@@ -42,14 +42,17 @@
 
   drawSvg();
 
-
-
   // VISUALISATION -------------------
 
   function visualise(data) {
 
     svg = svg.append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .attr({
+        "class": "holder",
+        "transform": function() {
+          return "translate(" + margin.left + "," + margin.top + ")";
+        }
+      });
 
     // rates.csv date format: "2016-05-27"
     // %Y - year with century as a decimal number e.g.: 1999
@@ -102,13 +105,14 @@
       .attr("class", "y axis")
       .call(yAxis);
        
-    svg
-      .append("g")         
-      .attr("class", "grid")
-      .call(yAxis
-        .tickSize(-width, 0, 0)
-        .tickFormat("")
-      );
+    // svg
+    //   .append("g")         
+    //   .attr("class", "grid")
+
+    //   .call(yAxis
+    //     .tickSize(-width, 0, 0)
+    //     .tickFormat("")
+    //   );
 
     svg
       .append("path")
@@ -164,11 +168,64 @@
     svg = d3.select("svg");
     setSvgSize();
 
+    // xAxis
     xScale 
       .range([0,width]);
 
+    xAxis
+      .scale(xScale);
+
+    d3.select(".x")
+      .attr({
+        "transform":"translate(0," + height + ")"
+      })
+      .call(xAxis);
+
+    // yAxis
     yScale
       .range([height, 0]); 
+
+    yAxis 
+      .scale(yScale);
+
+    d3.select(".y").call(yAxis);
+
+
+    // yAxisPretty
+
+    yAxisPretty 
+      .scale(yScale);
+
+   d3.select(".pretty").call(yAxisPretty);
+
+    // horizontal gridlines 
+
+  
+    // d3.select(".grid")
+    //  .call(yAxis
+    //     .tickSize(-width, 0, 0)
+    //     .tickFormat("")
+    //   );
+
+
+
+    area 
+      .x(function(d) { return xScale(d.date); })
+      .y0(height)
+      .y1(function(d) { return yScale(d.rate); });
+
+
+    d3.select("path.area")
+      .attr("d", area);
+
+
+    d3.select(".holder")
+      .attr({
+        "transform": function() {
+          return "translate(" + margin.left + "," + margin.top + ")";
+        }
+      });
+  
 
 
   }
