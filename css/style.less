@@ -1,0 +1,67 @@
+/* variables */ 
+@darkBlue: #2c3e50;
+@grey: #eee;
+@greyText: #ecf0f1;
+@orange: #e67e22;
+
+
+body {
+  font: 10px sans-serif;
+  background: @grey;
+}
+
+svg {
+  background: @darkBlue;
+}
+
+h1 {
+  color: @orange;
+  font-weight: bold;
+  font-size: 3em;
+  margin-bottom: 0;
+}
+
+p {
+  margin-top: 0;
+  color: @darkBlue;
+}
+
+text {
+  fill: @greyText;
+}
+
+.axis path {
+  fill: @darkBlue;
+  stroke-width: 1;
+  stroke: @greyText;
+}
+
+.axis line {
+  fill: none;
+  stroke: @greyText;
+  shape-rendering: crispEdges;
+  stroke-width: 1;
+}
+
+.pretty text {
+  display: none;
+}
+
+.area {
+  fill: @orange;
+  stroke-width: 1;
+  fill-opacity: 0.3;
+  stroke: @orange;
+}
+
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.7;
+}
+.grid path {
+  stroke-width: 0;
+}
+
+
+
+
