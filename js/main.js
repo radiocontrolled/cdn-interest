@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  var height, width, svg, xScale, xAxis, yScale, area, yAxis, yAxisPretty, margin = {top: 20, right: 20, bottom: 30, left: 40};
+  var height, width, svg, xScale, xAxis, yScale, area, yAxis, yAxisGrid, yAxisPretty, margin = {top: 20, right: 20, bottom: 30, left: 40};
   
   // RESPONSIVE FUNCTIONS -------------------
 
@@ -83,6 +83,11 @@
       .scale(yScale)
       .orient("left");
 
+    yAxisGrid = d3.svg.axis()
+      .ticks(7)
+      .scale(yScale)
+      .orient("left");
+
     // area generator 
     area = d3.svg.area()
       .x(function(d) { return xScale(d.date); })
@@ -105,14 +110,13 @@
       .attr("class", "y axis")
       .call(yAxis);
        
-    // svg
-    //   .append("g")         
-    //   .attr("class", "grid")
-
-    //   .call(yAxis
-    //     .tickSize(-width, 0, 0)
-    //     .tickFormat("")
-    //   );
+    svg
+      .append("g")         
+      .attr("class", "grid")
+      .call(yAxisGrid
+        .tickSize(-width, 0, 0)
+        .tickFormat("")
+      );
 
     svg
       .append("path")
@@ -201,11 +205,11 @@
     // horizontal gridlines 
 
   
-    // d3.select(".grid")
-    //  .call(yAxis
-    //     .tickSize(-width, 0, 0)
-    //     .tickFormat("")
-    //   );
+    d3.select(".grid")
+     .call(yAxisGrid
+        .tickSize(-width, 0, 0)
+        .tickFormat("")
+      );
 
 
 
