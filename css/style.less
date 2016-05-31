@@ -43,16 +43,24 @@ text {
 }
 
 .axis path {
-  fill: @darkBlue;
+  fill: transparent;
   stroke-width: 1;
   stroke: @greyText;
 }
 
-.axis line {
+.y.axis line {
   fill: none;
   stroke: @greyText;
   shape-rendering: crispEdges;
-  stroke-width: 1;
+  stroke-width: 0;
+}
+
+.x.axis line {
+
+  shape-rendering: crispedges;
+  stroke: #ecf0f1;
+  stroke-width: 0.5;
+
 }
 
 .pretty text {
