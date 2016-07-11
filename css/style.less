@@ -1,23 +1,25 @@
 /* variables */ 
 @darkBlue: #2c3e50;
+@clouds: #ecf0f1;
 @grey: #eee;
 @greyText: #ecf0f1;
 @orange: #e67e22;
 
 body {
   font-size: 10px;
-  background: @grey;
+  background: white;
   padding-top: 60px;
 }
 
 svg {
   background: @darkBlue;
+  background: @clouds; 
 }
 
-h1 {
+h1,h2 {
   color: @orange;
   font-weight: bold;
-  font-size: 3em;
+  font-size: 2em;
   margin-top: 0;
 }
 
@@ -39,12 +41,14 @@ a:focus {
 
 text {
   fill: @greyText;
+  fill: @darkBlue;
 }
 
 .axis path {
   fill: transparent;
   stroke-width: 1;
   stroke: @greyText;
+  stroke: @darkBlue; 
 }
 
 .y.axis line {
@@ -82,7 +86,7 @@ text {
 }
 
 .footer {
-  background: white;
+  background: @grey;
   color: #fff;
   bottom: 0;
   position: absolute;
@@ -102,7 +106,7 @@ text {
     padding-top: 20px;
   }
 
-  h1 {
+  h1, h2 {
     font-size: 2.75em;
   }
   p {
